@@ -5,23 +5,83 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
         <link href="http://fonts.cdnfonts.com/css/taylor-sans" rel="stylesheet">
 
-        <title>Speechy - Oliver Smith</title>
+        <title>Oliver Smith</title>
     </head>
-    <body>
+    <body id="body">
         <div id="myTopnav" class="topnav">
-            <h2>Speechy</h2>
+            <h2>
+            {% block pageTitle %}
+            
+            {% endblock %}
+            </h2>
+        </div>
+        <div id="logo">
+            Oliver Smith
         </div>
         <div id="mySidenav" class="sidenav">
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
+            <a href="/home">Home</a>
+            <a href="#" onclick="toggleNav('subModelling')">3D Modelling</a>
+            <div id="subModelling" class="subNav">
+                <a id="addPage">Add page +</a>
+                {% for post in posts %}
+                    <a onclick="getPost(this.innerHTML)">{{ post.title }}</a>
+                {% endfor %}
+            </div>
+            <a href="#" onclick="toggleNav('subSpeechy')">Speechy</a>
+            <div id="subSpeechy" class="subNav">
+                <a id="addPage">Add page +</a>
+            </div>
             <a href="#">Contact</a>
         </div>
-        <main>
+        <main id="result">
+
         {% block main %}
         
         {% endblock %}
         </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+        <script>
+            console.log("RUNNING")
+            function getPost(title){
+                console.log(title);
+                $.post( "/getPost", {
+                    javascript_data: title
+                });
+                // location.reload()
+                $("#result").load(" #result>*", "");
+                // javascript_data = {
+                //     "pages":[
+                //         {"title": "Valorant Go Knife"}
+                //     ]
+                // }
+                // $.get("/getPost", javascript_data)
+                // $.get("/getPost/<javascript_data>")
+                // $.ajax("localhost:5000/getPost", {
+                //     type: 'POST',
+                //     data: {
+                //     title: 'Valorant Go Knife',
+                //     }
+                // })
+                // localStorage.setItem("title", "Valorant Go Knife");               
+            }
+
+            subnavs = document.getElementsByClassName('subNav');
+            for (let i = 0; i < subnavs.length; i++){
+                subnavs[i].style.display = 'none';
+            }
+            
+            function toggleNav(subNav){
+                console.log(subNav);
+                subNav = document.getElementById(subNav);
+
+                console.log(subNav.style);
+                if (subNav.style.display == 'block'){
+                    subNav.style.display = 'none';
+                } else {
+                    subNav.style.display = 'block';
+                }
+            }
+        </script>
     </body>
     <footer>Oliver Smith 2021 ©</footer>
 </html>

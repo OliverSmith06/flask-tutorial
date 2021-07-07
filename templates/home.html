@@ -1,4 +1,23 @@
 {% extends "layout.html" %}
+{% block pageTitle %}
+Home
+{% endblock %}
 {% block main %}
-<h1>Testing!</h1>
+    <h1>{{ title }}</h1>
+    {% for post in posts %}
+    {% if post.title == title %}
+        <h1>{{ post.title }}</h1>
+        {% for element in post %}
+            {% if element == 'h1' %}
+                <h1>{{ post[element] }}</h1>
+            {% endif %}
+            {% if element == 'h2' %}
+                <h2>{{ post[element] }}</h2>
+            {% endif %}
+            {% if element == 'p' %}
+                <p>{{ post[element] }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endfor %}
 {% endblock %}

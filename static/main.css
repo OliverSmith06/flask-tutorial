@@ -1,7 +1,26 @@
 body {
     font-family: 'Taylor Sans', sans-serif;
     font-weight: 600;
+    background-color: rgb(228, 228, 228);
   }
+
+#logo{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 60px;
+    line-height: 60px;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 40px;
+    z-index: 3;
+    text-align: center;
+    border-right: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    /* padding: 10px 0; */
+}
 
 main{
     margin-left: 250px;
@@ -24,7 +43,7 @@ footer{
     left: 0;
     background-color: #0c71f5;
     overflow-y: hidden;
-    padding-left: 250px;
+    padding-left: 260px;
     color: #ddd;
 }
 
@@ -42,7 +61,7 @@ top: 0;
 left: 0;
 background-color: #0c71f5;
 overflow-x: hidden;
-padding-top: 100px;
+padding-top: 80px;
 }
 
 .sidenav a {
@@ -54,7 +73,7 @@ display: block;
 }
 
 .sidenav a:hover {
-color: #f1f1f1;
+color: #c9c9c9;
 }
 
 .sidenav .closebtn {
@@ -63,6 +82,17 @@ top: 0;
 right: 25px;
 font-size: 36px;
 margin-left: 50px;
+}
+
+.subNav{
+    padding: 0px 8px 8px 42px;
+    height: auto;
+    overflow: hidden;
+    display: block;
+}
+
+.subNav a {
+    cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {
